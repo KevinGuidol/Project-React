@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
+/* 
+.oswald-<uniquifier> {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+}
+
+*/
+
+#navBar {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    justify-content: space-around;
+    align-items: center;
+    font-family: "Oswald", sans-serif;
+    font-size: 20px;
+    color: white;
+    & a {
+        text-decoration: none;
+    }
+}#navBar a:visited {
+        color: rgb(196, 196, 196);
+        
+    }#navBar div:active {
+    background-color: grey;
+}
+.botonesNavBar {
+    padding: 10px 70px;
+    box-shadow: 1px 3px 10px rgb(63, 63, 63);
+    border-radius: 20px;
+}
+#logo {
+    color: white;
+    font-size: 40px;
+}

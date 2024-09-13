@@ -1,0 +1,12 @@
+.Cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 237, 178);
+    height: 200px;
+    width: 1000px;
+    border-radius: 20px;
+}& h2 {
+    color: black;
+    font-size: 25px;
+}
