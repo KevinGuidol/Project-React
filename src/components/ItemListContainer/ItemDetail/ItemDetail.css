@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue');
+/*.bebas-neue-regular {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  } */
+.cardProduct{
+    height: 250px;
+    width: 170px;
+    border: 2px solid rgb(255, 109, 56);
+    border-radius: 20px;
+    padding: 10px;
+    margin: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}& img {
+    width: 100px;
+    margin: 5px auto 0 auto;
+}
+.nameProduct {
+    font-family: "Bebas Neue", sans-serif;
+}
+.priceProduct {
+    color: red;
+    font-size: 20px;
+    font-family: "Bebas Neue", sans-serif;
+}
