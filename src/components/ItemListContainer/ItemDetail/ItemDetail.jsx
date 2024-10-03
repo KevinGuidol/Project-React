@@ -1,29 +1,22 @@
 import { useEffect, useState } from 'react';
+import { getProduct } from '../../asyncMock.js';
 import './ItemDetail.css'
+import { Link } from 'react-router-dom';
 const ListaProductos = () => {
-    const[products, setProducts] = useState([]);
-
+    const [prod, setProd] = useState([])
     useEffect(()=>{
-        const fetchProducts = async () => {
-            try {
-                const response = await fetch('https://api.mercadolibre.com/sites/MLA/search?category=MLA1055&limit=50');
-                const data = await response.json();
-                setProducts(data.results);
-            }catch (error) {
-            console.error('Error:', error);
-            }
-        };
-
-        fetchProducts();
+        getProduct.then((data) => setProd(data));
     },[]);
 
     return (
         <>
-        {products.map((product) => 
-        <div className='cardProduct' key={product.id}>
-            <img src={product.thumbnail} className='imgProduct' />
-            <p className='nameProduct'>{product.title}</p>
-            <p className='priceProduct'>${product.price}</p>
+        {prod.map((prod) => 
+        <div className='cardProduct' key={prod.id}>
+            <p className='nameProduct'>{prod.title}</p>
+            <img src={prod.imgRoute} alt="" />
+            <p className='priceProduct'>${prod.price}</p>
+            <p className='categoryProduct'>{prod.category}</p>
+            <button className='buttonProduct'><Link to={`/product/${prod.id}`}>Detalles</Link></button>
         </div> 
     )}
         </>

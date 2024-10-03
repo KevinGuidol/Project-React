@@ -1,45 +1,28 @@
 import CartShopping from './CartWidget';
 import './NavBar.css'
+import { Link } from 'react-router-dom';
 
-export default function BarraDeNavegacion ({index, contact, shopcart, className}) {
-
-    if (shopcart.includes('/')){
-        console.log('Es ruta');
+export default function BarraDeNavegacion () {
         return (
             <>
         <div id='navBar'>
             <div id='divIndex' className='botonesNavBar'>
-                <a href="">{index}</a>
+                <button><Link to={'/'}>Home</Link> </button>
             </div>
             <div id='divContact' className='botonesNavBar'>
-                <a href=''>{contact}</a>
+                <button><Link to={'/contact'}>Contacto</Link></button>
+            </div>
+            <div id='divProducts' className='botonesNavBar'>
+                <button><Link to={'/products'}>Productos</Link></button>
             </div>
             <div>
                 <h2 id='logo'>ClyB'sness</h2>
             </div>
             <div id='divShopcart' className='botonesNavBar'>
-                <CartShopping/>
+                <button><Link to={'/shopcart'}>Carrito</Link></button>
             </div>
         </div>
         </>
     )
-    }else {
-        console.log('Es String');
-        return (
-            <>
-                <div id='navBar'>
-                    <div id='divIndex' className='botonesNavBar'>
-                        <a href="#">{index}</a>
-                    </div>
-                    <div id='divContact' className='botonesNavBar'>
-                        <a href='../../pages/contactos'>{contact}</a>
-                    </div>
-                    <div id='divShopcart' className='botonesNavBar'>
-                        <a href='../../pages/carrito'><img src={shopcart} alt="" /></a>
-                    </div>
-                </div>
-        </>
-    )
         
     }
-}

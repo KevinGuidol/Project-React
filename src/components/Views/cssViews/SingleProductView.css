@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue');
+
+#cardProductSPV {
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+    border: 2px solid red ;
+    border-radius: 20px;
+    height: 400px;
+    margin-top: 50px;
+} & p {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: black ;
+}
+
+#imgProductSPV {
+    width: 150px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 25px;
+    margin-bottom: 10px;
+}
