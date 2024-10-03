@@ -161,3 +161,8 @@ export const findProduct = async (id) => {
     const prods = await getProduct;
     return prods.find((prod) => prod.id == id);
 }
+
+export const filterProduct = async (category) => {
+    const prods = await getProduct;
+    return prods.filter((prod) => prod.category == category)
+}

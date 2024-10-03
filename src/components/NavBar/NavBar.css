@@ -22,19 +22,23 @@
     font-family: "Oswald", sans-serif;
     font-size: 20px;
     color: white;
-    & a {
-        text-decoration: none;
-    }
 }#navBar a:visited {
-        color: rgb(196, 196, 196);
-        
-    }#navBar div:active {
+    color: rgb(196, 196, 196);
+    
+}#navBar div:active {
     background-color: grey;
 }
 .botonesNavBar {
+    background-color: black;
     padding: 10px 70px;
     box-shadow: 1px 3px 10px rgb(63, 63, 63);
     border-radius: 20px;
+    text-decoration: none;
+    border: 0 solid ;
+    font-family: "Oswald", sans-serif;
+    font-size: 23px;
+} & a {
+    text-decoration: none;
 }
 #logo {
     color: white;

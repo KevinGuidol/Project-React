@@ -30,8 +30,11 @@
 }
 .buttonProduct {
     background-color: black;
-    color: white;
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     font-style: normal;
+    border-radius: 5px;
+}& a {
+    color: white;
+    padding: 8px;
 }

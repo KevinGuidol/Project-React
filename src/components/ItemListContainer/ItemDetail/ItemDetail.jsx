@@ -1,13 +1,30 @@
 import { useEffect, useState } from 'react';
-import { getProduct } from '../../asyncMock.js';
+import { filterProduct, getProduct } from '../../asyncMock.js';
 import './ItemDetail.css'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 const ListaProductos = () => {
     const [prod, setProd] = useState([])
-    useEffect(()=>{
-        getProduct.then((data) => setProd(data));
-    },[]);
+    
+    const {categoryId} = useParams();
+    console.log('categoria:', categoryId);
+    
+    if (!categoryId) {        
+        useEffect(()=>{
+            getProduct.then((data) => setProd(data));
+        },[categoryId]);
+    }else {
 
+        useEffect(() => {
+            //creamos una funcion async para poder pedir y asignar el producto
+            const filterAndSetProduct = async () => {
+                const prod = await filterProduct(categoryId);
+                setProd(prod);
+            }
+            //llamamos la funcion para asingar el producto deseado
+            filterAndSetProduct();
+        }, [categoryId]);
+        
+    }
     return (
         <>
         {prod.map((prod) => 

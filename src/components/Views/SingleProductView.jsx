@@ -21,7 +21,7 @@ export default function ProductView() {
   if (!product) {
     //retornar un spinner
     return (<>
-    <h2>SOY UN SPINNER</h2></>);
+    <h2>Cargando...</h2></>);
   }
   return (
     <>
