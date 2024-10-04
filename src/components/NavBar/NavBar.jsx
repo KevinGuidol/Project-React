@@ -15,7 +15,7 @@ export default function BarraDeNavegacion () {
                 <Link to={'/category/Deportes'} >Deportivo</Link>
             </button>
             <div>
-                <h2 id='logo'>ClyB'sness</h2>
+                <Link to={'/'}><h2 id='logo'>ClyB'sness</h2></Link>
             </div>
             <button id='divShopcart' className='botonesNavBar'>
                 <Link to={'/shopcart'}>Carrito (2)</Link>
