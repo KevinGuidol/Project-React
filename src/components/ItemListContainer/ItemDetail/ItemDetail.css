@@ -16,7 +16,8 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-}& img {
+}
+.cardProduct img {
     width: 100px;
     margin: 5px auto 0 auto;
 }
@@ -34,6 +35,8 @@
     font-weight: 400;
     font-style: normal;
     border-radius: 5px;
+    border: none;
+    box-shadow: 2px -2px 1px grey;
 }& a {
     color: white;
     padding: 8px;

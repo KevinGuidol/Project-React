@@ -44,3 +44,7 @@
     color: white;
     font-size: 40px;
 }
+#cartButton {
+    padding: 0px 40px ;
+    position: relative;
+}

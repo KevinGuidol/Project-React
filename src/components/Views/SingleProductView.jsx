@@ -1,7 +1,9 @@
 import './cssViews/SingleProductView.css'
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { findProduct } from '../asyncMock';
+import ItemCount from '../ItemCount/ItemCount';
+import { findProduct } from '../firebase/firebase';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 export default function ProductView() {
   const [product, setProduct] = useState();
@@ -21,20 +23,22 @@ export default function ProductView() {
   if (!product) {
     //retornar un spinner
     return (<>
-    <h2>Cargando...</h2></>);
+    <LoadingSpinner style={{margin:"auto"}}/>
+    </>);
   }
   return (
     <>
     <div id='cardProductSPV' key={product.id}>
         <p id='titleProductSPV'>{product.title}</p>
         <img id='imgProductSPV' src={product.imgRoute} alt="" />
-        <p id='colorProductSPV'>Colores: {product.color.join(', ')}</p>
         <p id='brandProductSPV'>Marca: {product.brand}</p>
         <p id='garmetProductSPV'>Prenda: {product.garmet}</p>
         <p id='sizeProductSPV'>Talles: {product.size.join(', ')}</p>
         <p id='priceProductSPV'>${product.price}</p>
         <p id='categoryProductSPV'>Categoría: {product.category}</p>
+        <ItemCount stock={product.stock} product={product} />
     </div>
+    
 </>
 )
 }

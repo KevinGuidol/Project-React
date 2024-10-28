@@ -1,0 +1,35 @@
+#fondoCarrito {
+    background-color: rgb(255, 237, 178);
+    width: 80%;
+    height: auto;
+    min-height: 40vh;
+    margin: 30px auto;
+    border: 2px solid rgb(228, 207, 138);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.cardCarrito {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px 0px;
+    margin: 7px 0px;
+    border-radius: 20px;
+    background-color: rgb(240, 218, 147);
+    border: 2px solid rgb(224, 199, 117);
+    box-shadow: 5px 8px 1px rgb(228, 207, 138);
+}
+.imgCarrito {
+    width: 60px;
+    border: 1px solid rgb(221, 211, 176);
+    border-radius: 10px;
+}
+.deleteCarrito {
+    width:40px;
+    background-color:black;
+    border-radius:10px; 
+    border: 1px solid red
+}

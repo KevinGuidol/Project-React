@@ -1,33 +1,27 @@
 import { useEffect, useState } from 'react';
-import { filterProduct, getProduct } from '../../asyncMock.js';
+import  {getProducts}  from '../../firebase/firebase';
 import './ItemDetail.css'
 import { Link, useParams } from 'react-router-dom';
+import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner.jsx'; 
+
 const ListaProductos = () => {
-    const [prod, setProd] = useState([])
+    const [products, setProducts] = useState([])
     
     const {categoryId} = useParams();
     console.log('categoria:', categoryId);
     
-    if (!categoryId) {        
-        useEffect(()=>{
-            getProduct.then((data) => setProd(data));
-        },[categoryId]);
-    }else {
-
         useEffect(() => {
-            //creamos una funcion async para poder pedir y asignar el producto
-            const filterAndSetProduct = async () => {
-                const prod = await filterProduct(categoryId);
-                setProd(prod);
-            }
-            //llamamos la funcion para asingar el producto deseado
-            filterAndSetProduct();
-        }, [categoryId]);
-        
-    }
+            getProducts().then((products) => setProducts(products));
+            console.log('Productos: ',products);
+        },[])
+    if (!products) {
+        return <>
+                <LoadingSpinner/>
+            </>
+    }else{
     return (
         <>
-        {prod.map((prod) => 
+        {products.map((prod) => 
         <div className='cardProduct' key={prod.id}>
             <p className='nameProduct'>{prod.title}</p>
             <img src={prod.imgRoute} alt="" />
@@ -37,7 +31,7 @@ const ListaProductos = () => {
         </div> 
     )}
         </>
-    );
+    );}
 };
 
 export default ListaProductos;

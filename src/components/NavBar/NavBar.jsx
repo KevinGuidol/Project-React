@@ -1,24 +1,28 @@
 import './NavBar.css'
 import { Link } from 'react-router-dom';
+import SolarCartBold from './SolarCartBold';
 
 export default function BarraDeNavegacion () {
+    const lengthCarrito = 12
+    const leftNumbCarrito = lengthCarrito < 10 ? "69px" : "63px" 
         return (
             <>
         <div id='navBar'>
-            <button id='divIndex' className='botonesNavBar'>
+            <button className='botonesNavBar'>
                 <Link to={'/'}>Home</Link>
             </button>
-            <button id='divContact' className='botonesNavBar'>
+            <button className='botonesNavBar'>
                 <Link to={'/category/Urbano'} >Urbano</Link>
             </button>
-            <button id='divContact' className='botonesNavBar'>
+            <button className='botonesNavBar'>
                 <Link to={'/category/Deportes'} >Deportivo</Link>
             </button>
             <div>
                 <Link to={'/'}><h2 id='logo'>ClyB'sness</h2></Link>
             </div>
-            <button id='divShopcart' className='botonesNavBar'>
-                <Link to={'/shopcart'}>Carrito (2)</Link>
+            <button id='cartButton' className='botonesNavBar'>
+                <p style={{color:"black",position:"absolute",left:`${leftNumbCarrito}`,top:"17px"}}>{lengthCarrito}</p>
+                <Link to={'/cart'}> <SolarCartBold/> </Link>
             </button>
         </div>
         </>
