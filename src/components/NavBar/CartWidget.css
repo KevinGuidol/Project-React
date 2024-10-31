@@ -10,6 +10,11 @@
     flex-direction: column;
     padding: 20px;
 }
+#encabezadosCarrito {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
 .cardCarrito {
     display: flex;
     flex-direction: row;

@@ -12,7 +12,6 @@ const ListaProductos = () => {
     
         useEffect(() => {
             getProducts().then((products) => setProducts(products));
-            console.log('Productos: ',products);
         },[])
     if (!products) {
         return <>

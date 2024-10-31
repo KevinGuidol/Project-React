@@ -21,8 +21,9 @@ export default function BarraDeNavegacion () {
                 <Link to={'/'}><h2 id='logo'>ClyB'sness</h2></Link>
             </div>
             <button id='cartButton' className='botonesNavBar'>
+                <Link to={'/cart'}>
                 <p style={{color:"black",position:"absolute",left:`${leftNumbCarrito}`,top:"17px"}}>{lengthCarrito}</p>
-                <Link to={'/cart'}> <SolarCartBold/> </Link>
+                <SolarCartBold/> </Link>
             </button>
         </div>
         </>

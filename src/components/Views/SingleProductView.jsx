@@ -1,14 +1,32 @@
 import './cssViews/SingleProductView.css'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import ItemCount from '../ItemCount/ItemCount';
 import { findProduct } from '../firebase/firebase';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import { CartContext } from '../context/cartContext';
 
 export default function ProductView() {
   const [product, setProduct] = useState();
-
+  const [cantidad, setCantidad] = useState(1);
   const { id } = useParams();
+  const {addToCart} = useContext(CartContext)
+
+  //Funciones de botones de cantidad
+
+  const menorQ = () => {
+    if (cantidad > 1) {
+      setCantidad(cantidad-1);
+    }else {
+      console.error('No se puede disminuir más la cantidad')
+    }
+  }
+  const mayorQ = (stock) => {
+    if (cantidad < stock){
+      setCantidad(cantidad+1);
+    }else {
+      console.error('No se aumentar más la cantidad');
+    }
+  }
 
   useEffect(() => {
       //creamos una funcion async para poder pedir y asignar el producto
@@ -21,7 +39,7 @@ export default function ProductView() {
   }, []);
 
   if (!product) {
-    //retornar un spinner
+    //retornamos un spinner
     return (<>
     <LoadingSpinner style={{margin:"auto"}}/>
     </>);
@@ -36,7 +54,12 @@ export default function ProductView() {
         <p id='sizeProductSPV'>Talles: {product.size.join(', ')}</p>
         <p id='priceProductSPV'>${product.price}</p>
         <p id='categoryProductSPV'>Categoría: {product.category}</p>
-        <ItemCount stock={product.stock} product={product} />
+        <div id='divCompra'>
+          <button className='botonesCompra' onClick={menorQ}>-</button>
+          <p>{cantidad}</p>
+          <button className='botonesCompra' onClick={() => mayorQ(product.stock)}>+</button>
+        </div>
+        <button className='botonesCompra' onClick={() => addToCart(product , cantidad)}>Añadir al carrito</button>
     </div>
     
 </>
