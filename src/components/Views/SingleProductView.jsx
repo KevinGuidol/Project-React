@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { findProduct } from '../firebase/firebase';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import { CartContext } from '../context/cartContext';
+import { notify } from '../../App';
 
 export default function ProductView() {
   const [product, setProduct] = useState();
@@ -25,6 +26,7 @@ export default function ProductView() {
       setCantidad(cantidad+1);
     }else {
       console.error('No se aumentar más la cantidad');
+      notify('error','No hay más stock de este producto')
     }
   }
 

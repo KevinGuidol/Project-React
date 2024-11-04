@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createContext } from "react";
+import {notify} from '../../App'
 
 export const CartContext = createContext(false);
 
@@ -14,22 +15,33 @@ export const CartProvider = ({ children }) => {
     }
     //Agregamos la cantidad al object del producto (Cada vez que sumamos un producto) 
     const addToCart = (prod, cantidad) => {
-        const idProd = prod.id
-        const findedProd = cart.find((el) => el.id === idProd)
+        const idProd = prod.id;
+        console.log(cart);
+    
+        // Buscamos si el producto ya existe en el carrito
+        const foundProd = cart.find((el) => el.id === idProd);
         const newProd = {
             ...prod,
             quantity: cantidad
-        }
+        };
         console.log(newProd);
-        if (findedProd) {
-            setCart(...cart, findedProd.quantity + cantidad)
-            saveCart()
+    
+        if (foundProd) {
+            // Si el producto existe, actualizamos su cantidad
+            const updatedCart = cart.map((el) => 
+                el.id === idProd ? { ...el, quantity: el.quantity + cantidad } : el
+            );
+            setCart(updatedCart);
+        } else {
+            // Si el producto no existe, lo añadimos al carrito
+            setCart([...cart, newProd]);
         }
-        else {
-            setCart([...cart, newProd])
-            saveCart()
-        }
-    }
+    
+        // Guardamos el carrito después de actualizar
+        saveCart();
+        notify('success','Se agregó el producto al carrito');
+    };
+    
 
 
 
@@ -42,36 +54,42 @@ export const CartProvider = ({ children }) => {
     });
 
 
-    //Prueba de rendimiento
-    const pruebaLS = () => {
-        const productos = [{
-            id: 1,
-            title: "1",
-            imgRoute: "https://i.redd.it/cfd2cg8xib4a1.jpg",
-            price: "1",
-            category: "1",
-            quantity: 3
-        }]
-        localStorage.setItem('cart', JSON.stringify(productos));
-        setCart(productos)
-        console.log('Productos de prueba agregados');
-
-    }
-
-
     const cartDelete = () => {
         setCart([])
         localStorage.removeItem('cart')
     }
 
+    const delete1Item = (idProd) => {
+        // Busca el producto en el carrito
+        const foundProd = cart.find((el) => el.id === idProd);
+    
+        if (foundProd) {
+            // Si el producto existe, actualizamos su cantidad
+            const updatedCart = cart.map((el) => 
+                el.id === idProd 
+                    ? { ...el, quantity: el.quantity > 1 ? el.quantity - 1 : 0 } // Decrementar solo si es mayor que 1
+                    : el
+            );
+    
+            // Filtrar productos con cantidad 0 (opcional)
+            const filteredCart = updatedCart.filter((el) => el.quantity > 0);
+    
+            // Actualizar el estado del carrito
+            setCart(filteredCart);
+    
+            // Guardar el carrito después de actualizar
+            saveCart();
+        }
+    };
+    
 
     return (
         <CartContext.Provider value={{
             cart,
             saveCart,
-            pruebaLS,
             cartDelete,
-            addToCart
+            addToCart,
+            delete1Item
         }}>
 
             {children}

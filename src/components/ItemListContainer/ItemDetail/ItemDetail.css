@@ -4,7 +4,14 @@
     font-weight: 400;
     font-style: normal;
   } */
-.cardProduct{
+  @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+/* .merriweather-regular {
+  font-family: "Merriweather", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+ */
+  .cardProduct{
     height: 250px;
     width: 170px;
     border: 2px solid rgb(255, 109, 56);
@@ -16,10 +23,6 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-}
-.cardProduct img {
-    width: 100px;
-    margin: 5px auto 0 auto;
 }
 .nameProduct {
     font-family: "Bebas Neue", sans-serif;
@@ -40,4 +43,24 @@
 }& a {
     color: white;
     padding: 8px;
+}
+.descriptionProduct {
+    font-family: "Merriweather", serif;
+    font-weight: 600;
+    font-style: normal;
+    overflow: auto;
+    font-size: 12px;
+    text-align: center;
+}
+.divImg {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.divImg img {
+    width: 100px;
+    margin: 5px auto 0 auto;
 }
